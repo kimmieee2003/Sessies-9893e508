@@ -1,4 +1,8 @@
 
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,28 +15,21 @@
         <h1>Basketbal <small>(#2)</small></h1>
         <h1>Skeelers <small>(#3)</small></h1>
 
-        <form method="post">
-        keuze: <input type="text" name="bestel">
-        <button>submit</button>
+        <form name="form" method="post">
+        keuze: <input type="number" name="bestel">
+        <input type="submit" name="submit">
         </form>
 </body>
 </html>
 
 <?php
-    $a = "#1";
-    $b = "#2";
-    $c = "#3";
-     
-    setcookie ("#1", $a);
-    setcookie ("#2", $b);
-    setcookie ("#3", $c);
-
-    session_start();
-
-        if (isset($_POST["bestel"])) {
-            $bestel = "#" . $_POST["bestel"];
-            if (isset($_COOKIE[$bestel])) {
-                echo "gekozen item:". $_COOKIE[$bestel];
-            }
-        }
+if(isset($_POST['submit'])) {
+    $bestel = $_POST['bestel'];
+    if(($bestel <4) && ($bestel >0)) {
+        $_SESSION["gekozenNummer"] = $_POST['bestel'];
+    }
+}
+if(isset($_SESSION["gekozenNummer"])) {
+    echo ("gekozen nummer #". $_SESSION['gekozenNummer']);
+}
         ?>
