@@ -23,13 +23,13 @@ session_start();
 </html>
 
 <?php
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $bestel = $_POST['bestel'];
-    if(($bestel <4) && ($bestel >0)) {
+    if (($bestel < 4) && ($bestel > 0)) {
         $_SESSION["gekozenNummer"] = $_POST['bestel'];
     }
 }
-if(isset($_SESSION["gekozenNummer"])) {
-    echo ("gekozen nummer #". $_SESSION['gekozenNummer']);
+if (isset($_SESSION["gekozenNummer"])) {
+    echo ("gekozen nummer #" . $_SESSION['gekozenNummer']);
 }
-        ?>
+?>
